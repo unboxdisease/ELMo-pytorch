@@ -29,4 +29,4 @@ class Bi_RNN(nn.Module):
 
         # Can pass on the entirety of lstm_out to the next layer if it is a seq2seq prediction
         y_pred = self.linear(lstm_out)
-        return F.log_softmax(y_pred, dim=1), self.hidden
+        return y_pred, self.hidden

@@ -25,7 +25,7 @@ train_dl = DataLoader(yelp_train, shuffle=False, batch_size=bs, num_workers=2)
 val_dl = DataLoader(yelp_val, shuffle=True, batch_size=bs, num_workers=2)
 test_dl = DataLoader(yelp_test, shuffle=True, batch_size=bs, num_workers=2)
 
-wandb.init(project="ELMo", entity="kushaljain")
+# wandb.init(project="ELMo", entity="kushaljain")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = Bi_RNN(50, 100, bs, len(word2id_ts), 2)
 lr = 0.0003
@@ -158,12 +158,12 @@ for epoch in range(epochs):
     perplexity['val'].append(val_perplexity)
 
     
-    wandb.log({
-        "Training loss": train_loss,
-        "Validation loss": val_loss,
-        "Train accuracy" : train_accuracy,
-        "Validation accuracy" : val_accuracy
-              })
+#     wandb.log({
+#         "Training loss": train_loss,
+#         "Validation loss": val_loss,
+#         "Train accuracy" : train_accuracy,
+#         "Validation accuracy" : val_accuracy
+#               })
     
     # save the model
     if (epoch + 1) % 5 == 0:
